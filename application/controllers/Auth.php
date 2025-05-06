@@ -66,7 +66,7 @@ private function redirect_by_role($role){
             redirect('dashboard');
             break;
             case 'user':
-                redirect('user/dashboard');
+                redirect('dashboard_user');
                 break;
             default:
             redirect('Auth/login');

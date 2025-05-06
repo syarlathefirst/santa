@@ -186,43 +186,51 @@
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
+        <?php $level = $this->session->userdata('role');?>
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item">
+          <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Admin
+                Dashboard
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?=base_url('berita')?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+              <?php if ($level == 'admin' || $level == 'user') :?>
+                <li class="nav-item"> 
+              <a href="<?= base_url('berita');?>" class="nav-link">
+                  <i class="far fa-newspaper nav-icon"></i>
                   <p>Berita</p>
                 </a>
               </li>
+              <?php endif; ?>
+              
+              <?php if($level == 'admin'): ?>
               <li class="nav-item">
-                <a href="<?=base_url('kategori')?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Kategori</p>
+              <a href="<?=base_url('kategori');?>" class="nav-link">
+                  <i class="far fa-folder nav-icon"></i>
+                  <p>kategori</p>
                 </a>
               </li>
+              <?php endif; ?>
+
+              <?php if($level == 'admin'): ?>
               <li class="nav-item">
-              <a href="<?=base_url('auth')?>" class="nav-link">
+              <a href="<?=base_url('dosen');?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Auth</p>
+                  <p>Dosen</p>
                 </a>
               </li>
-            </ul>
-          </li>
-            </ul>
-          </li>
-          
-          
-        </ul>
+              <?php endif; ?>
+              </ul>
+              <li class = "nav-item">
+                <a href="<?=site_url('auth/logout') ?>" class="nav-link">
+                <i class="nav-icon fas fa-sign-out-alt"></i>
+                <p>Logout</p>
+              </a>
+              </li>
+        
       </nav>
       <!-- /.sidebar-menu -->
     </div>
