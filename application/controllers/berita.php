@@ -1,23 +1,25 @@
 <?php
-defined('BASEPATH')OR exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-class berita extends CI_Controller{
+class berita extends MY_Controller{
 
     public function __construct(){
         parent::__construct();
         $this->load->model('Berita_model');
     }
     public function index(){
-        
+
         $data['berita']=$this->Berita_model->get_all_berita();
         $this->load->view('templates/header');
-        $this->load->view('berita/index',$data);
+        $this->load->view('berita/index' ,$data);
         $this->load->view('templates/footer');
     }
-    public function tambah (){
+    public function tambah(){
+        $this->load->model('kategori_model');
+        $data['kategori'] = $this->kategori_model->get_all();
         $data['berita']=$this->Berita_model->get_all_berita();
         $this->load->view('templates/header');
-        $this->load->view('berita/form_berita', $data);
+        $this->load->view('berita/form_berita',$data);
         $this->load->view('templates/footer');
     }
     public function insert(){
@@ -45,23 +47,23 @@ class berita extends CI_Controller{
             redirect('berita');
         }
     }
-        public function hapus($idberita){
-            $this->Berita_model->delete_berita($idberita);
-            redirect('berita');
-    }
-    public function edit ($idberita){
+    public function hapus($idberita){
+        $this->Berita_model->delete_berita($idberita);
+        redirect('berita');
+        }
+    public function edit($idberita){
         $data['berita']=$this->Berita_model->get_berita_by_id($idberita);
         $this->load->view('templates/header');
-        $this->load->view('berita/edit_berita', $data);
+        $this->load->view('berita/edit_berita',$data);
         $this->load->view('templates/footer');
-    }
+        }
     public function update($id){
         $this->form_validation->set_rules('judul','judul','required');
         $this->form_validation->set_rules('kategori','kategori','required');
         $this->form_validation->set_rules('headline','headline','required');
         $this->form_validation->set_rules('isi_berita','isi_berita','required');
         $this->form_validation->set_rules('pengirim','pengirim','required');
-        if($this->form_validation->run() === FALSE){
+        if ($this->form_validation->run() === FALSE){
             $this->index($id);
         }else{
             $data = [
@@ -69,10 +71,10 @@ class berita extends CI_Controller{
                 'kategori' => $this->input->post('kategori'),
                 'headline' => $this->input->post('headline'),
                 'isi_berita' => $this->input->post('isi_berita'),
-                'pengirim' => $this->input->post('pengirim'),
+                'pengirim' => $this->input->post('pengirim')
             ];
-        $this->Berita_model->update_berita($id, $data);
-        redirect('berita');
+            $this->Berita_model->update_berita($id, $data);
+            redirect('berita');
         }
     }
-}
+    }

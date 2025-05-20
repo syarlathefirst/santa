@@ -15,8 +15,10 @@
   <link rel="stylesheet" href="<?=base_url('assets/adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css');?>">
   <link rel="stylesheet" href="<?=base_url('assets/adminlte/plugins/jqvmap/jqvmap.min.css')?>">
   <link rel="stylesheet" href="<?=base_url('assets/adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css');?>">
+  <link rel="stylesheet" href="<?=base_url('assets/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css');?>">
   <link rel="stylesheet" href="<?=base_url('assets/adminlte/plugins/daterangepicker/daterangepicker.css');?>">
   <link rel="stylesheet" href="<?=base_url('assets/adminlte/plugins/summernote/summernote-bs4.css');?>">
+  <link rel="stylesheet" href="<?=base_url('assets/adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css');?>">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->

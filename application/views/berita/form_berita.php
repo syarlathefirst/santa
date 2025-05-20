@@ -37,7 +37,14 @@
                     </div>
                     <div class="form-group">
                             <label for="kategori">Kategori</label>
-                            <input type="text" class="form-control" name="kategori" id="kategori" placeholder="Kategori" required>
+                            <select class= "form-control" name="Kategori" id="Kategori" required>
+                                <option value="">--Pilih Kategori --</option>
+                                <?php if (!empty($kategori)): ?>
+                                    <?php foreach ($kategori as $k): ?>
+                                        <option value="<?= $k->idkategori;?>"><?= $k->kategori;?></option>
+                                    <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </select>
                     </div>
                     <div class="form-group">
                             <label for="headline">Headline</label>
