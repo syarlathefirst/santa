@@ -58,6 +58,10 @@
                             <label for="pengirim">Pengirim</label>
                             <input type="text" class="form-control" name="pengirim" id="pengirim" placeholder="Pengirim" required>
                     </div>
+                    <div class="form-group">
+                            <label for="tgl_publish">Tanggal Publish</label>
+                            <input type="date" class="form-control" name="tgl_publish" id="tgl_publish" placeholder="Tanggal" required>
+                    </div>
                      <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Simpan Berita</button>
                     </div>
